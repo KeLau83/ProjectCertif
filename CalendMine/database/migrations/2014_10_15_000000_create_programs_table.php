@@ -15,10 +15,12 @@ class CreateProgramsTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('name_id');
+            $table->foreignId('user_id');
             $table->foreignId('category_id');
-            $table->foreignId('recurrence_id');
             $table->string('name');
+            $table->string('description')->nullable();
+            $table->enum('type',['year', 'month', 'week'])->nullable();
+            $table->integer('nbr_time')->nullable();
             $table->timestamps();
         });
     }
